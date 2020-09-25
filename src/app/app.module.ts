@@ -9,7 +9,8 @@ import { SlidebarComponent } from './slidebar/slidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { GiangvienComponent } from './main-content/giangvien/giangvien.component';
 import { SinhvienComponent } from './main-content/sinhvien/sinhvien.component';
-import {LoginComponent} from './login/login.component'
+import {LoginComponent} from './login/login.component';
+import { PageStudentRegisterComponent } from './page-student-register/page-student-register.component'
 const route:Routes=[
   {
     path: '',
@@ -36,7 +37,8 @@ const route:Routes=[
     SlidebarComponent,
     MainContentComponent,
     GiangvienComponent,
-    SinhvienComponent
+    SinhvienComponent,
+    PageStudentRegisterComponent
   ],
   imports: [
     BrowserModule,
