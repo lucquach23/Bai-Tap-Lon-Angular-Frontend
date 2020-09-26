@@ -10,7 +10,9 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { GiangvienComponent } from './main-content/giangvien/giangvien.component';
 import { SinhvienComponent } from './main-content/sinhvien/sinhvien.component';
 import {LoginComponent} from './login/login.component';
-import { PageStudentRegisterComponent } from './page-student-register/page-student-register.component'
+import { PageStudentRegisterComponent } from './page-student-register/page-student-register.component';
+import { AdminComponent } from './admin/admin.component';
+import { ClientComponent } from './client/client.component'
 const route:Routes=[
   {
     path: '',
@@ -38,7 +40,9 @@ const route:Routes=[
     MainContentComponent,
     GiangvienComponent,
     SinhvienComponent,
-    PageStudentRegisterComponent
+    PageStudentRegisterComponent,
+    AdminComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,

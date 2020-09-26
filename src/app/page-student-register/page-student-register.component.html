@@ -1,23 +1,125 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinh Viên Đăng kí</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý lớp học</title>
+    <link rel="stylesheet" href="./style/style.css" />
 </head>
+
 <body>
-    <div>
-        <div>
-            <img src="" alt="">
-            <span>Trang Đăng Kí Lớp Học<br>Trường Đại Học SPKT Hưng Yên</span>
-            <button>Đăng xuất</button>
-        </div>
-        <div>
-            <div>
-                
+    <nav>
+        <div class="logo">
+            <a href="#">
+                <img src="./images/logo.png" alt="logo" title="logo">
+            </a>
+            <div class="logo__title">
+                <h1>trang đăng kí lớp học</h1>
+                <div>trường đại học bách khoa hà nội</div>
             </div>
-            <div></div>
         </div>
+        <a class="exit link" href="#">Thoát Đăng Nhập</a>
+    </nav>
+    <div class="main-content">
+        <aside>
+            <ul>
+                <li>Mã sinh viên: <b>20179999</b></li>
+                <li>Họ tên SV: <b>Phạm Trọng Vàng</b></li>
+                <li>Lớp: <b>12A4</b></li>
+                <li>Chương trình: <b>Kỹ thuật cơ khí</b></li>
+                <li>Số tín chỉ tối đa: <b>14</b></li>
+                <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li>
+            </ul>
+        </aside>
+        <main>
+            <div class="breadcrumb">
+                <div class="breadcrumb-item">trang đăng kí sinh viên</div>
+                <div class="breadcrumb-item">trang đăng kí sinh viên</div>
+            </div>
+            <div class="input">
+                <span>Đăng kí mã lớp:</span>
+                <input type="text"><button>ĐK lớp</button>
+            </div>
+            <table border="1">
+                <caption>Các lớp đăng kí</caption>
+                <tr>
+                    <td>Mã lớp</td>
+                    <td>Mã lớp kèm</td>
+                    <td>Tên lớp</td>
+                    <td>Mã HP</td>
+                    <td>Loại lớp</td>
+                    <td>TT lớp</td>
+                    <td>Yêu cầu</td>
+                    <td>Trạng thái ĐK</td>
+                    <td>Loại ĐK</td>
+                    <td>Thực hiện</td>
+                    <td>TC</td>
+                </tr>
+                <tr>
+                    <td>12304</td>
+                    <td>12304</td>
+                    <td>Văn hoá kinh doanh</td>
+                    <td>EM1180</td>
+                    <td>LB + TT</td>
+                    <td>Điều chỉnh đăng kí</td>
+                    <td>TN</td>
+                    <td>Thành công</td>
+                    <td>offline</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>12304</td>
+                    <td>12304</td>
+                    <td>Văn hoá kinh doanh</td>
+                    <td>EM1180</td>
+                    <td>LB + TT</td>
+                    <td>Điều chỉnh đăng kí</td>
+                    <td>TN</td>
+                    <td>Thành công</td>
+                    <td>offline</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>12304</td>
+                    <td>12304</td>
+                    <td>Văn hoá kinh doanh</td>
+                    <td>EM1180</td>
+                    <td>LB + TT</td>
+                    <td>Điều chỉnh đăng kí</td>
+                    <td>TN</td>
+                    <td>Thành công</td>
+                    <td>offline</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>12304</td>
+                    <td>12304</td>
+                    <td>Văn hoá kinh doanh</td>
+                    <td>EM1180</td>
+                    <td>LB + TT</td>
+                    <td>Điều chỉnh đăng kí</td>
+                    <td>TN</td>
+                    <td>Thành công</td>
+                    <td>offline</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td colspan="11">Tổng tín chỉ đăng kí : 14</td>
+                </tr>
+            </table>
+            <div class="btn-delete">
+                <button>Xoá các lớp chọn</button>
+            </div>
+        </main>
     </div>
+    <footer>
+        Trường đại học Bách Khoa Hà Nội <br />
+        Số 1 Đại Cồ Việt Hai Bà Trưng
+    </footer>
 </body>
+
 </html>
