@@ -7,8 +7,18 @@ declare let $: any;
 })
 export class SidebarComponent implements OnInit, AfterViewInit {
   public menus = [
-  {name :'Người dùng', url:'',icon:'user',childs:[{name:'Quản lý người dùng',url:'user/user'},{name:'Đăng xuất', url:''},{name:'Đăng nhập', url:'/login'}]},
-  {name:'Hàng hóa',url:'',icon:'signal',childs:[{name:'Quản lý đơn hàng',url:'/product/order'},{name:'Quản lý loại hàng',url:'/product/type'},{name:'Quản lý sản phẩm',url:'/product/product'}]}];
+  {name :'Lớp đăng kí', url:'',icon:'edit',
+  childs:[
+    {name:'Danh sách lớp mở',url:'user/user'},
+    {name:'Học phần', url:'/hocphan'},
+    {name:'Giảng Viên', url:'/giangvien'},
+    {name:'Sinh Viên', url:'/sinhvien'},
+  ]},
+  // {name:'Quản lý sinh viên',url:'',icon:'signal',childs:[{name:'Quản lý đơn hàng',url:'/product/order'},{name:'Quản lý loại hàng',url:'/product/type'},{name:'Quản lý sản phẩm',url:'/product/product'}]},
+  // {name :'Quản ký giảng viên', url:'',icon:'user'},
+  // {name:'QL cơ sở vật chất',url:'',icon:'signal'}
+
+];
   constructor() { } 
   ngOnInit(): void {
   }
