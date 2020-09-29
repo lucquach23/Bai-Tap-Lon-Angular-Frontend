@@ -16,80 +16,81 @@
 </div>
 <div class="row">
 
-  <div  class="col-xs-12">
+  <div style="margin-left: 10px;" class="col-xs-12">
     <!-- PAGE CONTENT BEGINS -->
     <p-panel header="Tìm kiếm" [style]="{'margin-top': '2px'}">
       <form class="form-horizontal" role="form">
- <label class="label label-success">Học Phần</label>
-        <div class="form form-group">
-         
+        <div style="display: flex;">
+          <div>
+            <label class="label label-success">Học Phần</label>
+            <div class="form form-group">         
+              <select class="selectpicker" data-live-search="true">
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
+              <option data-tokens="ketchup mustard">Toán rời rạc</option>
+              <option data-tokens="mustard">Giải tích</option>
+              <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>s
+              </select>
+            </div>
+          </div>
+          <div style="margin-left: 50px;">
+            <label class="label label-success">Giảng viên</label>
+        <div class="form form-group">         
           <select class="selectpicker" data-live-search="true">
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>
-          <option data-tokens="ketchup mustard">Toán rời rạc</option>
-          <option data-tokens="mustard">Giải tích</option>
-          <option data-tokens="frosting">Cơ sở kỹ thuật lập trình với C#</option>s
+          <option data-tokens="ketchup mustard">GV001 - Trịnh Thị Nhị</option>
+          <option data-tokens="mustard">GV002 - Nguyễn Văn Đông</option>
+          <option data-tokens="frosting">GV003 - Nguyễn Quang Hoan</option>
+          
         </select>
         </div>
-        
-        
-        
-        <!--<div class="form-group">
-           <label class="col-sm-1 control-label no-padding-right">Mã lớp</label>
-          <div class="col-sm-11">
-            <input type="text" placeholder="Tài khoản" />
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-1 control-label no-padding-right">Tên lớp (HP)</label>
-          <div class="col-sm-11">
-            <input type="text" placeholder="Họ tên" style="width: 100%;" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-1 control-label no-padding-right"></label>
-          <div class="col-sm-11">
-            <button class="btn btn-sm btn-primary">Tìm kiếm</button>
-          </div>
-        </div> -->
+        </div>       
       </form> 
     </p-panel>
     <p-table selectionMode="single" [value]="nguoidungs" styleClass="p-datatable-gridlines">
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 70px; text-align: center;">STT</th>
-          <th style="width: 15%; text-align: left;">Tài khoản</th>
-          <th style="width: 20%; text-align: left;">Họ tên</th>
-          <th style="text-align: left;">Mô tả</th>
-          <th style="width: 130px; text-align: left;">Trạng thái</th>
-          <th style="width: 200px; text-align: left;">Tác vụ</th>
+          <th style="width: 30px; text-align: center;">TT</th>
+          <th style="width: 30%; text-align: left;">Tên học phần</th>
+          <th style="width: 25%; text-align: left;">Giảng viên</th>
+          <th style="width: 15%; text-align: left;">Số TC</th>
+          <th style="width: 130px; text-align: left;">Phương thức</th>
+          <th style="width: 20%; text-align: left;">Thời gian</th>
+          <th style="width: 15%; text-align: left;">Tuần học</th>
+          <th style="width: 15%; text-align: left;">Số SV</th>
+          <th style="width: 20%; text-align: left;">Trạng thái</th>
+          <th style="width: 200px; text-align: left;">Tác vụ</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-item  let-i="rowIndex">
         <tr>
           <td>{{ i + 1 }}</td>
-          <td>{{ item.taikhoa }}</td>
-          <td>{{ item.hoten }}</td>
-          <td>{{ item.mota }}</td>
+          <td>{{ item.tenhocphan }}</td>
+          <td>{{ item.tenGV }}</td>
+          <td>{{ item.soTC }}</td>
+          <td>{{ item.phuongthuc }}</td>
+          <td>{{ item.time }}</td>
+          <td>{{ item.tuanhoc }}</td>
+          <td>{{ item.sosv }}</td>
           <td>{{ item.trangthai }}</td>
           <td class="action-col" >
             <div class="btn-group">

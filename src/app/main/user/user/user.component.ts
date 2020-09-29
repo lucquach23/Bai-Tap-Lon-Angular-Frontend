@@ -35,16 +35,26 @@ export class UserComponent extends BaseComponent implements OnInit {
 
     this.nguoidungs = [
       {
-        taikhoa: 'dongnh',
-        hoten: 'Nguyễn Hữu Đông',
-        mota: 'Quản trị dự án',
-        trangthai: 'true',
+        tenhocphan: 'Tư tưởng HCM',
+        tenGV: 'Nguyễn Hữu Đông',
+        soTC: 2,
+        phuongthuc: 'Offline',
+        time: 'Sáng thứ 2,5',
+        tuanhoc:'34567',
+        phonghoc:'ĐH305',
+        trangthai:'not enough',
+        sosv: 34
       },
       {
-        taikhoa: 'duongtran',
-        hoten: 'Trần Đỗ Hồng Dương',
-        mota: 'Thành viên',
-        trangthai: 'false',
+        tenhocphan: 'Toán rời rạc',
+        tenGV: 'Nguyễn Hữu Đông',
+        soTC: 2,
+        phuongthuc: 'Offline',
+        time: 'Sáng thứ 2,5',
+        tuanhoc:'34567',
+        phonghoc:'ĐH305',
+        trangthai:'not enough',
+        sosv:24
       },
     ];
   }

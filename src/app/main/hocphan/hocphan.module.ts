@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { UserComponent } from './user/user.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {HocphanComponent} from './hocphan/hocphan.component';
+
 @NgModule({
-  declarations: [UserComponent, UserComponent],
+  declarations: [],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild([
       {
-        path: 'dslm',
-        component: UserComponent,
+        path: 'dshp',
+        component: HocphanComponent,
       },
   ]),  
   ]
 })
-export class UserModule { }
+export class HocPhanModule { }
