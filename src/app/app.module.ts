@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisPageComponent } from './regis-page/regis-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent  
+    LoginComponent,
+    RegisPageComponent  
   ],
   imports: [
     BrowserModule,
