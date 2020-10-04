@@ -165,14 +165,14 @@
     padding: 10px;
   }
   
-  .main-content main table tr:first-child td {
+  /* .main-content main table tr:first-child td {
     background-color: #bdc3c7;
-  }
+  } */
   
-  .main-content main table tr:last-child td {
+  /* .main-content main table tr:last-child td {
     background-color: #bdc3c7;
     text-align: right;
-  }
+  } */
   
   /* .main-content main .btn-delete {
     display: -webkit-box;
@@ -199,4 +199,12 @@
     text-align: center;
     padding: 10px;
   }
+  .my-custom-scrollbar {
+    position: static;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
   /*# sourceMappingURL=style.css.map */

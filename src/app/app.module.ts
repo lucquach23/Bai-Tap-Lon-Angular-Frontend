@@ -7,12 +7,16 @@ import { LoginComponent } from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisPageComponent } from './regis-page/regis-page.component';
+import { DslmComponent } from './regis-page/dslm/dslm.component';
+import { RegisPageGVComponent } from './regis-page-gv/regis-page-gv.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisPageComponent  
+    RegisPageComponent,
+    DslmComponent,
+    RegisPageGVComponent  
   ],
   imports: [
     BrowserModule,
