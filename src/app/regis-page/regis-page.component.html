@@ -28,92 +28,94 @@
                 <li>Lớp: <b>12A4</b></li>
                 <li>Chương trình: <b>Kỹ thuật cơ khí</b></li>
                 <li>Số tín chỉ tối đa: <b>14</b></li>
-                <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li>
+                <!-- <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li> -->
             </ul>
         </aside>
-        <main>
-            <!-- <div class="breadcrumb">
-                <div class="breadcrumb-item">đăng kí</div>
-                <div class="breadcrumb-item">trang đăng kí sinh viên</div>
-            </div> -->
+        <main>          
             <h4>Thông tin danh sách lớp mở</h4>
-            <div class="input">
+            <div >
                 <span>Tìm mã lớp:</span>
-                <input type="text"><button>ĐK lớp</button>
-                <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
+              
+                   
+                <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">                   
                     <table class="table table-bordered table-striped mb-0">
                       <thead>
                         <tr>
-                          <th >#</th>
-                          <th >First</th>
-                          <th >Last</th>
-                          <th >Handle</th>
+                          <th >TT</th>
+                          <th >Tên học phần</th>
+                          <th >Giảng viên</th>
+                          <th >Số TC</th>
+                          <th>Phương thức</th>
+                          <th>Thời gian</th>
+                          <th>Tuần học</th>
+                          <th>Số SV</th>
+                          <th>Trạng thái</th>
+                          <th>Đăng kí</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        <tr>
-                          <th>3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        <tr>
-                          <th>3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        <tr>
-                          <th>3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <tr *ngFor="let r of filtered">
+                            <td>{{1}}</td>
+                            <td>{{ r.tenhp_invoice}}</td>
+                            <td>{{r.giangvien_invoice }}</td>
+                            <td>{{ r.sotc_invoice}}</td>
+                            <td>{{r.phuongthuc_invoice }}</td>
+                            <td>{{ r.thoigian_invoice}}</td>
+                            <td>{{ r.tuanhoc_invoice}}</td>
+                            <td>{{r.sosv_invoice }}</td>
+                            <td>{{ r.trangthai_invoice}}</td>
+                            <!-- <th><a [routerLink]="['/hero', r.mahp_invoice]">Đăng kí</a></th> -->
+                        </tr>                       
                       </tbody>
-                    </table>
-                  
-                  </div>
+                    </table>                               
+                </div>
             </div>
 
-            <h4>Danh sách lớp đã đăng kí</h4>
-           
+
+
+
+
+
+
+            <!-- <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+            <table>
+              <tr *ngFor="let row of filtered">
+                <td>{{row.number_invoice}}</td>
+                <td>{{row.note_invoice}}</td>
+                <td>{{row.state_invoice}}</td>
+                <td>{{row.customer_invoice}}</td>
+                <td>{{row.date_invoice}}</td>
+                <td>{{row.days_invoice}}</td>
+                <td>{{row.expiration_invoice}}</td>
+                <td>{{row.payment_invoice}}</td>
+              </tr>
+            </table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <h4>Danh sách lớp đã đăng kí</h4>          
             <button style="float: right;" class="btn btn-success">Xoá các lớp chọn</button>
             <table border="1">
                 <!-- <caption>Các lớp đăng kí</caption> -->
