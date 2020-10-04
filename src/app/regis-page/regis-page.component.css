@@ -143,12 +143,13 @@
   
   .main-content main .input input,
   .main-content main .input button {
-    height: 40px;
-    width: 150px;
-    background-color: #bdc3c7;
-    border: 1px solid #7f8c8d;
+    height: 33px;
+    width: 190px;
+    /* background-color: #bdc3c7; */
+    /* border: 1px solid #7f8c8d; */
     cursor: pointer;
     padding: 5px;
+    margin-bottom: 5px;
   }
   
   .main-content main table {
