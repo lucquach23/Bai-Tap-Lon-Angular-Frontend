@@ -19,10 +19,16 @@ export const mainRoutes: Routes = [
               path: '', component: DashboardComponent
           },
           {
-              path: 'danhsach',  loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+              path: 'giang-vien',  loadChildren: () => import('./giangvien/giangvien.module').then(m => m.GiangVienModule)
           },
           {
-              path: 'hocphan', loadChildren: () => import('./hocphan/hocphan.module').then(m => m.HocPhanModule)
+            path: 'sinh-vien',  loadChildren: () => import('./sinhvien/sinhvien.module').then(m => m.SinhVienModule)
+        },
+          {
+            path: 'lop-mo',  loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+        },
+          {
+              path: 'hoc-phan', loadChildren: () => import('./hocphan/hocphan.module').then(m => m.HocPhanModule)
           },
       ]
   }
