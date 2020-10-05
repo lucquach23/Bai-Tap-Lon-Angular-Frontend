@@ -208,4 +208,12 @@
     .table-wrapper-scroll-y {
     display: block;
     }
+    hr {
+      
+      border:1px solid gray;
+      
+      height:1px;
+      width:100%;
+    }
+    
   /*# sourceMappingURL=style.css.map */

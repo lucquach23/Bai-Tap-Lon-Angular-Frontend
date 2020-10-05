@@ -1,1 +1,129 @@
-<p>regis-page-gv works!</p>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="UTF-8" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý lớp học</title>
+    <!-- <link rel="stylesheet" href="./style/style.css" /> -->
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#">
+                <img style="width: 97px;" src="../../assets/images/logo.png" alt="logo" title="logo">
+            </a>
+            <div class="logo__title">
+                <h3>trang đăng kí giảng dạy cho giảng viên</h3>
+                <div>trường đại học SPKT HƯNG YÊN</div>
+            </div>
+        </div>
+        <a style="margin: 20px;" href="#"><i style="font-size: 30px;" class="fa fa-sign-out"></i>  </a>
+    </nav>
+    <div class="main-content">
+        <aside>
+            <ul>
+                <li>Mã giảng viên: <b>20179999</b></li>
+                <li>Họ tên: <b>Nguyễn Hoàng Điệp</b></li>
+                <li>Bộ Môn: <b>Công nghệ phần mềm</b></li>               
+                <li>Khoa: <b>Công nghệ thông tin</b></li>
+                <li>Học vị: <b>Thạc sĩ</b></li>
+               
+                <!-- <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li> -->
+            </ul>
+        </aside>
+        <main>          
+            <h4>Thông tin danh sách Học phần</h4>
+            <div class="input">
+                <span>Nhập từ khoá:</span>
+              
+                   
+                <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">                   
+                    <table border="1" class="table table-bordered table-striped mb-0">
+                      <thead>
+                        <tr>
+                          <th >TT</th>
+                          <th >Tên học phần</th>
+                          <th >Số TC</th>
+                          <th >Loại</th>
+                          <th>Khoa phụ trách</th>
+                          <th>Thứ</th>
+                          <th>Thời gian</th>
+                          <th>Tuần học</th>
+                          <th>Phòng (dự kiến)</th>                          
+                          <th>Đăng kí</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let r of filtered;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{ r.tenhp_invoice}}</td>
+                            <td>{{r.giangvien_invoice }}</td>
+                            <td>{{ r.sotc_invoice}}</td>
+                            <td>{{r.phuongthuc_invoice }}</td>
+                            <td>{{ r.thoigian_invoice}}</td>
+                            <td>{{ r.tuanhoc_invoice}}</td>
+                            <td>{{r.sosv_invoice }}</td>
+                            <td>{{ r.trangthai_invoice}}</td>
+                            <th style="cursor: pointer;"><a  (click)="confirmRegis(r.mahp_invoice)" ><i style="color: green;" class="fa fa-check"></i></a></th>
+                        </tr>                       
+                      </tbody>
+                    </table>                               
+                </div>
+            </div>
+<hr />
+            <!-- [routerLink]="['/hero', r.mahp_invoice]" -->
+            <div style="display: inline; ">
+                <h4>Danh sách lớp đã đăng kí</h4>          
+                <button (click)="deleteClass()"  style="float: right; position: static;" class="btn btn-success">Xoá các lớp chọn</button>
+            </div>
+            
+            <table border="1">
+                <!-- <caption>Các lớp đăng kí</caption> -->
+                
+                <tr>
+                    <td>Học phần</td>
+                    <td>Số TC</td>
+                    <td>Thứ</td>
+                    <td>Thời gian</td>
+                    <td>Tuần học</td>
+                    <td>Phòng học</td>
+                    <td>Xoá lớp</td>
+                </tr>
+                <tr>
+                    <td>Toán rời rạc</td>
+                    <td>3</td>
+                    <td>2,5,6</td>
+                    <td>7:45 - 11:00</td>                   
+                    <td>345678</td>
+                    <td>ĐH205</td>      
+                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
+                </tr>
+                <tr>
+                    <td>Toán rời rạc</td>
+                    <td>3</td>
+                    <td>2,5,6</td>
+                    <td>7:45 - 11:00</td>                 
+                    <td>345678</td>
+                    <td>ĐH205</td>      
+                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
+                </tr>
+                
+                
+                <tr>
+                    <td colspan="11">Tổng tín chỉ đăng kí : 14</td>
+                    
+                </tr>
+                
+            </table>
+            
+        </main>
+    </div>
+    <footer>
+        TRƯỜNG ĐẠI HỌC SƯ PHẠM KĨ THUẬT HƯNG YÊN<br />
+       cs2: Nhân Hoà, Mỹ Hào, Hưng Yên
+        
+    </footer>
+</body>
+</html>

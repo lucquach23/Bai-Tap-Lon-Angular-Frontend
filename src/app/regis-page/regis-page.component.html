@@ -11,14 +11,14 @@
     <nav>
         <div class="logo">
             <a href="#">
-                <img src="../../assets/images/logo.png" alt="logo" title="logo">
+                <img style="width: 97px;" src="../../assets/images/logo.png" alt="logo" title="logo">
             </a>
             <div class="logo__title">
-                <h1>trang đăng kí lớp học</h1>
+                <h3>trang đăng kí lớp học cho sinh viên</h3>
                 <div>trường đại học SPKT HƯNG YÊN</div>
             </div>
         </div>
-        <a class="exit link" href="#">Thoát Đăng Nhập</a>
+        <a style="margin: 20px;" href="#"><i style="font-size: 30px;" class="fa fa-sign-out"></i>  </a>
     </nav>
     <div class="main-content">
         <aside>
@@ -39,7 +39,7 @@
                    
                 <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">                   
-                    <table class="table table-bordered table-striped mb-0">
+                    <table border="1" class="table table-bordered table-striped mb-0">
                       <thead>
                         <tr>
                           <th >TT</th>
@@ -65,112 +65,48 @@
                             <td>{{ r.tuanhoc_invoice}}</td>
                             <td>{{r.sosv_invoice }}</td>
                             <td>{{ r.trangthai_invoice}}</td>
-                            <!-- <th><a [routerLink]="['/hero', r.mahp_invoice]">Đăng kí</a></th> -->
+                            <th style="cursor: pointer;"><a  (click)="confirmRegis(r.mahp_invoice)" ><i style="color: green;" class="fa fa-check"></i></a></th>
                         </tr>                       
                       </tbody>
                     </table>                               
                 </div>
             </div>
-
-
-
-
-
-
-
-            <!-- <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
-            <table>
-              <tr *ngFor="let row of filtered">
-                <td>{{row.number_invoice}}</td>
-                <td>{{row.note_invoice}}</td>
-                <td>{{row.state_invoice}}</td>
-                <td>{{row.customer_invoice}}</td>
-                <td>{{row.date_invoice}}</td>
-                <td>{{row.days_invoice}}</td>
-                <td>{{row.expiration_invoice}}</td>
-                <td>{{row.payment_invoice}}</td>
-              </tr>
-            </table> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <h4>Danh sách lớp đã đăng kí</h4>          
-            <button style="float: right;" class="btn btn-success">Xoá các lớp chọn</button>
+<hr />
+            <!-- [routerLink]="['/hero', r.mahp_invoice]" -->
+            <div style="display: inline; ">
+                <h4>Danh sách lớp đã đăng kí</h4>          
+                <button (click)="deleteClass()"  style="float: right; position: static;" class="btn btn-success">Xoá các lớp chọn</button>
+            </div>
+            
             <table border="1">
                 <!-- <caption>Các lớp đăng kí</caption> -->
                 
                 <tr>
-                    <td>Mã lớp</td>
-                    <td>Mã lớp kèm</td>
-                    <td>Tên lớp</td>
-                    <td>Mã HP</td>
-                    <td>Loại lớp</td>
-                    <td>TT lớp</td>
-                    <td>Yêu cầu</td>
-                    <td>Trạng thái ĐK</td>
-                    <td>Loại ĐK</td>
-                    <td>Thực hiện</td>
-                    <td>TC</td>
+                    <td>Học phần</td>
+                    <td>Số TC</td>
+                    <td>Thứ</td>
+                    <td>Thời gian</td>
+                    <td>Tuần học</td>
+                    <td>Phòng học</td>
+                    <td>Xoá lớp</td>
                 </tr>
                 <tr>
-                    <td>12304</td>
-                    <td>12304</td>
-                    <td>Văn hoá kinh doanh</td>
-                    <td>EM1180</td>
-                    <td>LB + TT</td>
-                    <td>Điều chỉnh đăng kí</td>
-                    <td>TN</td>
-                    <td>Thành công</td>
-                    <td>offline</td>
-                    <td></td>
-                    <td>2</td>
+                    <td>Toán rời rạc</td>
+                    <td>3</td>
+                    <td>2,5,6</td>
+                    <td>7:45 - 11:00</td>                   
+                    <td>345678</td>
+                    <td>ĐH205</td>      
+                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
                 </tr>
                 <tr>
-                    <td>12304</td>
-                    <td>12304</td>
-                    <td>Văn hoá kinh doanh</td>
-                    <td>EM1180</td>
-                    <td>LB + TT</td>
-                    <td>Điều chỉnh đăng kí</td>
-                    <td>TN</td>
-                    <td>Thành công</td>
-                    <td>offline</td>
-                    <td></td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Mã lớp</td>
-                    <td>Mã lớp kèm</td>
-                    <td>Tên lớp</td>
-                    <td>Mã HP</td>
-                    <td>Loại lớp</td>
-                    <td>TT lớp</td>
-                    <td>Yêu cầu</td>
-                    <td>Trạng thái ĐK</td>
-                    <td>Loại ĐK</td>
-                    <td>Thực hiện</td>
-                    <td>TC</td>
+                    <td>Toán rời rạc</td>
+                    <td>3</td>
+                    <td>2,5,6</td>
+                    <td>7:45 - 11:00</td>                 
+                    <td>345678</td>
+                    <td>ĐH205</td>      
+                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
                 </tr>
                 
                 
@@ -178,7 +114,7 @@
                     <td colspan="11">Tổng tín chỉ đăng kí : 14</td>
                     
                 </tr>
-                
+<tr><td>Lưu ý: Thời gian và phòng học có thể sẽ bị thay đổi theo phòng kế hoạch giảng dạy phân công</td></tr>
             </table>
             
         </main>
@@ -189,17 +125,4 @@
         
     </footer>
 </body>
-<script type="text/javascript">
-    function g(){
-        var rs="";
-       
-        for(var i=1;i<=30;i++)    
-        {
-            var v= (i%2==0)?v=1:v=0;
-            rs+="('SV"+(i+60)+"','101173','ĐH',N'Bùi "+(i+60)+"',"+v+",N'Địa chỉ "+(i+60)+"','bui"+(i+60)+"@gmail.com','0987463214','pass1'),";
-        }
-        console.log(rs);
-    }
-    
-</script>
 </html>
