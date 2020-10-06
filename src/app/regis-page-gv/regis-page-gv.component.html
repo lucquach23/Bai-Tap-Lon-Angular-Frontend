@@ -45,13 +45,14 @@
                         <tr>
                           <th >TT</th>
                           <th >Tên học phần</th>
+                          <th>Mã HP</th>
                           <th >Số TC</th>
                           <th >Loại</th>
                           <th>Khoa phụ trách</th>
-                          <th>Thứ</th>
+                          <!-- <th>Thứ</th>
                           <th>Thời gian</th>
                           <th>Tuần học</th>
-                          <th>Phòng (dự kiến)</th>                          
+                          <th>Phòng (dự kiến)</th> -->
                           <th>Đăng kí</th>
                         </tr>
                       </thead>
@@ -59,14 +60,129 @@
                         <tr *ngFor="let r of filtered;let i=index">
                             <td>{{i+1}}</td>
                             <td>{{ r.tenhp_invoice}}</td>
-                            <td>{{r.giangvien_invoice }}</td>
+                            <td>{{r.mahp_invoice}}</td>
                             <td>{{ r.sotc_invoice}}</td>
                             <td>{{r.phuongthuc_invoice }}</td>
-                            <td>{{ r.thoigian_invoice}}</td>
-                            <td>{{ r.tuanhoc_invoice}}</td>
-                            <td>{{r.sosv_invoice }}</td>
-                            <td>{{ r.trangthai_invoice}}</td>
-                            <th style="cursor: pointer;"><a  (click)="confirmRegis(r.mahp_invoice)" ><i style="color: green;" class="fa fa-check"></i></a></th>
+                            <td>{{ r.khoaphutrach}}</td>
+                            
+                            <th style="cursor: pointer;">
+                                <button style="border: none;background-color: white;"  data-toggle="modal" data-target="#myModal"><i style="color: green;" class="fa fa-check"></i></button>
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                  
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Đăng kí giảng dạy học phần</h4>
+                                        </div>
+                                        <div  class="container modal-body">
+                                            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" style="margin-left: 25px;"  action="#">
+                                                <div style="display: flex;">
+                                                    <div>
+                                                        <div class="form-group">
+                                                            Mã HP: 
+                                                            <input class="form-control" disabled type="text" #name="ngModel" ngModel name="mahp"/>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            Số TC: 
+                                                            <input class="form-control"disabled type="text" #name="ngModel" ngModel name="sotc"/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            Tên HP: 
+                                                            <input style="width: 380px;
+                                                            position: absolute;" class="form-control"disabled type="text" #name="ngModel" ngModel name="tenhp"/>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 35px;">
+                                                        <div class="form-group">
+                                                            Phương thức: 
+                                                            <input class="form-control" disabled type="text" #name="ngModel" ngModel name="phuongthuc"/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            Khoa phụ trách: 
+                                                            <input class="form-control" disabled type="text" #name="ngModel" ngModel name="khoaphutrach"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                               
+                                                <div style="display: flex; margin-top: 33px;">
+                                                    <div>
+                                                        <div class="form-group">
+                                                            Thời gian: 
+                                                            <select class="form-control" required  name="thoigian" ngModel >
+                                                                <option *ngFor="let city of listCity" [value]="city.id">{{city.name}}</option>
+                                                            </select>                      
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 68px;">
+                                                        <div class="form-group">
+                                                            Phòng (dự kiến): 
+                                                            <input placeholder="VD: ĐH205" class="form-control"  type="text" #name="ngModel" ngModel name="khoaphutrach"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex;">
+                                                    <div>
+                                                        <div>
+                                                            Thứ: 
+                                                            <div style="display: flex; font-weight: normal!important;">
+                                                                <div>
+                                                                    <div class="checkbox"> 
+                                                                        <input type="checkbox" value="">Thứ 2
+                                                                      </div>
+                                                                      <div class="checkbox">
+                                                                        <input type="checkbox" value="">Thứ 3
+                                                                      </div>
+                                                                      <div class="checkbox ">
+                                                                        <input type="checkbox" value="">Thứ 4
+                                                                      </div>
+                                                                </div>
+                                                                <div style="margin-left: 80px;">
+                                                                    <div class="checkbox">
+                                                                        <input type="checkbox" value="">Thứ 5
+                                                                      </div>
+                                                                      <div class="checkbox">
+                                                                        <input type="checkbox" value="">Thứ 6
+                                                                      </div>
+                                                                      <div class="checkbox ">
+                                                                        <input type="checkbox" value="">Thứ 7
+                                                                      </div>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                             
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 35px;">
+                                                        <div style="margin-left: 40px;">
+                                                            <div class="form-group">
+                                                                Tuần học(dự kiến): 
+                                                                <input placeholder="VD: 23456" class="form-control"  type="text" #name="ngModel" ngModel name="khoaphutrach"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                               
+                                               
+                                                <!-- <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Submit</button>  -->
+                                            </form>  
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Đăng kí</button>
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          
+                                        </div>
+                                      </div>
+                                  
+                                    </div>
+                                  </div>
+                                  
+                            </th>
                         </tr>                       
                       </tbody>
                     </table>                               

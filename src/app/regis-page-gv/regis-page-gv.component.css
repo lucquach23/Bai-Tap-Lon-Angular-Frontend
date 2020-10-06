@@ -143,7 +143,7 @@
   
   .main-content main .input input,
   .main-content main .input button {
-    height: 33px;
+    /* height: 33px; */
     width: 190px;
     /* background-color: #bdc3c7; */
     /* border: 1px solid #7f8c8d; */
