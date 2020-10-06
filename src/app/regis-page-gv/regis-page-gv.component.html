@@ -166,15 +166,17 @@
                                                     </div>
                                                 </div>
                                                 
-                                                
-                                               
+                                                <hr style="border: 1px" />
+                                               <div style="display: flex; margin-left: 60px;">
+                                                <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Đăng kí</button>
+                                                <button type="button" style="margin-left: 20px;" class="btn btn-default" data-dismiss="modal">Close</button>
+                                               </div>
                                                
                                                 <!-- <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Submit</button>  -->
                                             </form>  
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">Đăng kí</button>
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                           
                                           
                                         </div>
                                       </div>
@@ -191,7 +193,7 @@
 <hr />
             <!-- [routerLink]="['/hero', r.mahp_invoice]" -->
             <div style="display: inline; ">
-                <h4>Danh sách lớp đã đăng kí</h4>          
+                <h4>Danh sách lớp đã đăng kí giảng dạy</h4>          
                 <button (click)="deleteClass()"  style="float: right; position: static;" class="btn btn-success">Xoá các lớp chọn</button>
             </div>
             
@@ -199,33 +201,29 @@
                 <!-- <caption>Các lớp đăng kí</caption> -->
                 
                 <tr>
-                    <td>Học phần</td>
+                    <td>Mã HP</td>
+                    <td>Tên HP</td>
                     <td>Số TC</td>
                     <td>Thứ</td>
                     <td>Thời gian</td>
                     <td>Tuần học</td>
                     <td>Phòng học</td>
-                    <td>Xoá lớp</td>
+                    <td>Tác vụ</td>
                 </tr>
                 <tr>
+                    <td>HP01</td>
                     <td>Toán rời rạc</td>
                     <td>3</td>
                     <td>2,5,6</td>
                     <td>7:45 - 11:00</td>                   
                     <td>345678</td>
                     <td>ĐH205</td>      
-                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
+                    <td style="cursor: pointer;">
+                        <a style="margin-right: 15px;" (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a> |
+                        <a style="margin-left: 15px;" (click)="deleteSingleSubject()"><i style="color: green;" class="fa fa-edit"></i></a>
+                    </td>             
                 </tr>
-                <tr>
-                    <td>Toán rời rạc</td>
-                    <td>3</td>
-                    <td>2,5,6</td>
-                    <td>7:45 - 11:00</td>                 
-                    <td>345678</td>
-                    <td>ĐH205</td>      
-                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
-                </tr>
-                
+               
                 
                 <tr>
                     <td colspan="11">Tổng tín chỉ đăng kí : 14</td>
