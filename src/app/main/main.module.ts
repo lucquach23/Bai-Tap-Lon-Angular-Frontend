@@ -10,7 +10,10 @@ import { SinhvienComponent } from './sinhvien/sinhvien/sinhvien.component';
 import { HocphanComponent } from './hocphan/hocphan/hocphan.component';
 import { GiangvienComponent } from './giangvien/giangvien/giangvien.component';
 import { HocPhanModule } from './hocphan/hocphan.module';
-
+import { UnauthorizedComponent } from '../shared/unauthorized/unauthorized.component';
+import { FileNotFoundComponent } from '../shared/file-not-found/file-not-found.component';
+import { RoleGuard } from '../lib/auth.guard';
+import { Role } from '../models/role';
 export const mainRoutes: Routes = [
   {
       path: '', component: MainComponent,
@@ -19,16 +22,36 @@ export const mainRoutes: Routes = [
               path: '', component: DashboardComponent
           },
           {
-              path: 'giang-vien',  loadChildren: () => import('./giangvien/giangvien.module').then(m => m.GiangVienModule)
+            path: 'not-found',
+            component: FileNotFoundComponent,
           },
           {
-            path: 'sinh-vien',  loadChildren: () => import('./sinhvien/sinhvien.module').then(m => m.SinhVienModule)
+            path: 'unauthorized',
+            component: UnauthorizedComponent,
+          },
+          {
+              path: 'giang-vien', 
+              loadChildren: () => import('./giangvien/giangvien.module').then(m => m.GiangVienModule),
+              canActivate: [RoleGuard],
+              data: { roles: [Role.User] },
+          },
+          {
+            path: 'sinh-vien',  
+            loadChildren: () => import('./sinhvien/sinhvien.module').then(m => m.SinhVienModule),
+            canActivate: [RoleGuard],
+              data: { roles: [Role.User] },
         },
           {
-            path: 'lop-mo',  loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+            path: 'lop-mo',  
+            loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+            canActivate: [RoleGuard],
+              data: { roles: [Role.User] },
         },
           {
-              path: 'hoc-phan', loadChildren: () => import('./hocphan/hocphan.module').then(m => m.HocPhanModule)
+              path: 'hoc-phan', 
+              loadChildren: () => import('./hocphan/hocphan.module').then(m => m.HocPhanModule),
+              canActivate: [RoleGuard],
+              data: { roles: [Role.User] },
           },
       ]
   }
