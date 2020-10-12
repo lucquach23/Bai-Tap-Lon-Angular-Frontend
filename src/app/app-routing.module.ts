@@ -15,17 +15,20 @@ const routes: Routes = [
   },
   {
     path: 'register-sv',component:RegisPageComponent ,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // data: { roles: [Role.Sv] },
 
   },
   {
     path: 'register-gv',component:RegisPageGVComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // data: { roles: [Role.Gv] },
   },
   {
     path: '',
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard],
+    // data: { roles: [Role.Admin] },
   },
   {
     path: '**',

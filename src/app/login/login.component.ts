@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     });
     // get return url from route parameters or default to '/'
     //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.returnUrl = this.route.snapshot.queryParams['/'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['/'] || '/'||'register-sv'||'register-gv';
 
   }
 
@@ -85,7 +85,20 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          this.router.navigate([this.returnUrl]);
+          console.log(data.role);
+          if(data.role=='Gv')
+          {
+            this.router.navigate(['register-gv']);
+          }
+          if(data.role=='Sv')
+          {
+            this.router.navigate(['register-sv']);
+          }
+          if(data.role=='Admin')
+          {
+            this.router.navigate(['/']);
+          }
+          //this.router.navigate([this.returnUrl]);
         },
         (error) => {
           this.error = error;
