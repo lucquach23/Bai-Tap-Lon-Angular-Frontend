@@ -12,13 +12,17 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './lib/error.interceptor';
 import { JwtInterceptor } from './lib/jwt.interceptor';
+import { Page404Component } from './page404/page404.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisPageComponent,
-    RegisPageGVComponent  
+    RegisPageGVComponent,
+    Page404Component,
+    SearchPipe  
   ],
   imports: [
     BrowserModule,

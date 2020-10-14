@@ -12,11 +12,20 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const user = this.authenticationService.userValue;
         if (user) {
+            //&& (route.data.roles && route.data.roles.indexOf(user.role) === 1)
+            if (route.data.roles && route.data.roles.indexOf(user.role) === -1) 
+            {
+                this.router.navigate(['/trang-khong-ton-tai'],{ queryParams: { returnUrl: state.url }});
+                return false;
+            }
             return true;
-        } 
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-        return false;
+        }
+            // not logged in so redirect to login page with the return url
+            this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+            return false;
+        
+        
+        
     }
 }
 

@@ -18,15 +18,17 @@
                 <div>trường đại học SPKT HƯNG YÊN</div>
             </div>
         </div>
-        <a style="margin: 20px;" href="#"><i style="font-size: 30px;" class="fa fa-sign-out"></i>  </a>
+        <a (click)="logout()" style="margin: 20px;" href="#"><i style="font-size: 30px;" class="fa fa-sign-out"></i> Logout </a>
     </nav>
+    
     <div class="main-content">
+       
         <aside>
             <ul>
-                <li>Mã sinh viên: <b>20179999</b></li>
-                <li>Họ tên SV: <b>Phạm Trọng Vàng</b></li>
-                <li>Lớp: <b>12A4</b></li>
-                <li>Chương trình: <b>Kỹ thuật cơ khí</b></li>
+                <li>Mã sinh viên: <b>{{pro5.idStudent}}</b></li>
+                <li>Họ tên SV: <b>{{pro5.name}}</b></li>
+                <li>Lớp: <b>{{pro5.idClass}}</b></li>
+                <li>Chương trình: <b>{{pro5.idDepartment}}</b></li>
                 <li>Số tín chỉ tối đa: <b>14</b></li>
                 <!-- <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li> -->
             </ul>
@@ -34,38 +36,49 @@
         <main>          
             <h4>Thông tin danh sách lớp mở</h4>
             <div class="input">
-                <span>Nhập từ khoá:</span>
-              
-                   
-                <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
+                <span>Nhập từ khoá:</span>  
+                <!-- (ngModelChange)="onFilterChange()"                 -->
+                <input [(ngModel)]="filterString"  />
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">                   
                     <table border="1" class="table table-bordered table-striped mb-0">
                       <thead>
                         <tr>
-                          <th >TT</th>
-                          <th >Tên học phần</th>
-                          <th >Giảng viên</th>
-                          <th >Số TC</th>
-                          <th>Phương thức</th>
+                          <th>Mã lớp</th>
+                          <th>
+                              Tên HP
+                              <!-- <button (click)="Sapxep()">sort</button> -->
+                          </th>
+                          <th>
+                            <i style="cursor: pointer;" (click)="SortUpTC()" class="fa fa-arrow-up"></i>
+                              Số TC
+                            <i style="cursor: pointer;" (click)="SortDownTC()" class="fa fa-arrow-down"></i>
+                            </th>
+                          <th>Giảng viên</th>
+                          <th>Thứ</th>
                           <th>Thời gian</th>
-                          <th>Tuần học</th>
-                          <th>Số SV</th>
-                          <th>Trạng thái</th>
+                          <th>Tuần</th>
+                          <th>Phòng</th>
+                          <th>
+                            <i style="cursor: pointer;" (click)="SortUpSL()" class="fa fa-arrow-up"></i>
+                              SLĐK
+                              <i style="cursor: pointer;" (click)="SortDownSL()" class="fa fa-arrow-down"></i>
+                            </th>
                           <th>Đăng kí</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let r of filtered">
-                            <td>{{1}}</td>
-                            <td>{{ r.tenhp_invoice}}</td>
-                            <td>{{r.giangvien_invoice }}</td>
-                            <td>{{ r.sotc_invoice}}</td>
-                            <td>{{r.phuongthuc_invoice }}</td>
-                            <td>{{ r.thoigian_invoice}}</td>
-                            <td>{{ r.tuanhoc_invoice}}</td>
-                            <td>{{r.sosv_invoice }}</td>
-                            <td>{{ r.trangthai_invoice}}</td>
-                            <th style="cursor: pointer;"><a  (click)="confirmRegis(r.mahp_invoice)" ><i style="color: green;" class="fa fa-check"></i></a></th>
+                        <tr *ngFor="let r of filtered | search:filterString;let i=index">                          
+                            <td>{{ r.id_ClassRegister}}</td>
+                            <td>{{r.name_subject }}</td>
+                            <td>{{ r.number_of_credits}}</td>
+                            <td>{{r.name }}</td>
+                            <td>{{ r.thu}}</td>
+                            <td>{{ r.time}}</td>
+                            <td>{{r.week }}</td>
+                            <td>{{r.room }}</td>
+                            <td>{{r.slsv}}</td>
+                            
+                            <th style="cursor: pointer;"><a  (click)="confirmRegis(r.id_ClassRegister)" ><i style="color: green;" class="fa fa-edit"></i></a></th>
                         </tr>                       
                       </tbody>
                     </table>                               
@@ -82,30 +95,31 @@
                 <!-- <caption>Các lớp đăng kí</caption> -->
                 
                 <tr>
-                    <td>Học phần</td>
-                    <td>Số TC</td>
-                    <td>Thứ</td>
-                    <td>Thời gian</td>
-                    <td>Tuần học</td>
-                    <td>Phòng học</td>
-                    <td>Xoá lớp</td>
+                    <td><b>Mã lớp mở</b></td>
+                    <td>
+                        <b>Tên HP</b>
+                        
+                    </td>
+                    <td><b>Số TC</b></td>
+                    <td><b>Giảng viên</b></td>
+                    <td><b>SĐT</b></td>
+                    <td><b>Thứ</b></td>
+                    <td><b>Thời gian</b></td>
+                    <td><b>Tuần</b></td>
+                    <td><b>Phòng</b></td>
+                    <td><b>Xoá lớp</b></td>
                 </tr>
-                <tr>
-                    <td>Toán rời rạc</td>
-                    <td>3</td>
-                    <td>2,5,6</td>
-                    <td>7:45 - 11:00</td>                   
-                    <td>345678</td>
-                    <td>ĐH205</td>      
-                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
-                </tr>
-                <tr>
-                    <td>Toán rời rạc</td>
-                    <td>3</td>
-                    <td>2,5,6</td>
-                    <td>7:45 - 11:00</td>                 
-                    <td>345678</td>
-                    <td>ĐH205</td>      
+                
+                <tr *ngFor="let item of _listClassRegistionedOfStudent">
+                    <td>{{item.id_ClassRegister}}</td>  
+                    <td>{{item.nameSubject }}</td>    
+                    <td>{{item.number_of_credits}}</td>
+                    <td>{{item.name }}</td>
+                    <td>{{item.phone }}</td>               
+                    <td>{{item.thu }}</td>
+                    <td>{{item.time }}</td>
+                    <td>{{item.week }}</td>
+                    <td>{{item.room }}</td>
                     <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
                 </tr>
                 
@@ -126,7 +140,7 @@
     <footer>
         TRƯỜNG ĐẠI HỌC SƯ PHẠM KĨ THUẬT HƯNG YÊN<br />
        cs2: Nhân Hoà, Mỹ Hào, Hưng Yên
-        
+       <!-- <button (click)="getProfile()">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</button> -->
     </footer>
 </body>
 </html>

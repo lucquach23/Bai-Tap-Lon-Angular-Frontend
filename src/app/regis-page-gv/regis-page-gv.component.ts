@@ -3,6 +3,7 @@ import { MustMatch } from './../helpers/must-match.validator';
 import { FileUpload } from 'primeng/fileupload';
 import { FormBuilder, Validators} from '@angular/forms';
 import { BaseComponent } from './../common/base-component';
+import { AuthenticationService } from '../lib/authentication.service';
 @Component({
   selector: 'app-regis-page-gv',
   templateUrl: './regis-page-gv.component.html',
@@ -10,7 +11,7 @@ import { BaseComponent } from './../common/base-component';
 })
 export class RegisPageGVComponent  implements OnInit {
 
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService) {}
   submitted = false;
   public listCity=[
     {id:1,name:'Sáng: 7:45-11:00'},
@@ -21,7 +22,9 @@ export class RegisPageGVComponent  implements OnInit {
     console.log(value);
   }
 
-
+  logout() {
+    this.authenticationService.logout();
+  } 
   filterString = "";
   filtered;
 

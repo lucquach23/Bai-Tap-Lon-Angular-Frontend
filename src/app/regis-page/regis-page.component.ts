@@ -1,110 +1,95 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { data } from 'jquery';
+import { AuthenticationService } from '../lib/authentication.service';
+import {ProfileService} from '../service/profile.service';
+import {listClassRegistionedOfStudent} from '../service/listClassRegistionedOfStudent';
+import {listClassOpen} from '../service/listClassOpen';
+import { SearchPipe } from '../search.pipe';
 @Component({
   selector: 'app-regis-page',
   templateUrl: './regis-page.component.html',
-  styleUrls: ['./regis-page.component.css']
+  styleUrls: ['./regis-page.component.css'],
+  providers:[ProfileService,listClassRegistionedOfStudent,listClassOpen]
 })
-export class RegisPageComponent {
+export class RegisPageComponent implements OnInit{
+  constructor(private _pro5:ProfileService,
+              private authenticationService: AuthenticationService,
+              private _lcos:listClassRegistionedOfStudent,
+              private _lco:listClassOpen
+              ) 
+              { }
 
-  constructor() { }
+  public pro5:any;
+  public _listClassRegistionedOfStudent:any[];
 
-  filterString = "";
-  filtered;
-
-  invoices:any[] =[
-    {
-     mahp_invoice:'m1',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: 23,
-      trangthai_invoice: 'not enough'     
-    },{
-      mahp_invoice:'m2',
-      tenhp_invoice: 'Mạng máy tính',
-      giangvien_invoice: 'Vũ khánh quý',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: 23,
-      trangthai_invoice: 'not enough'     
-    },
-    {
-      mahp_invoice:'m3',
-      tenhp_invoice: 'Cấu trúc dữ liệu và giải thuật',
-      giangvien_invoice: 'Nguyễn hải năng',
-      sotc_invoice: '4',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: 23,
-      trangthai_invoice: 'not enough'     
-    },{
-      mahp_invoice:'m4',
-      tenhp_invoice: 'Chuyên đề 3',
-      giangvien_invoice: 'Vũ Xuân thắng',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: 23,
-      trangthai_invoice: 'not enough'     
-    },
-    {
-      mahp_invoice:'m5',
-      tenhp_invoice: 'Web API',
-      giangvien_invoice: 'Nguyễn Văn Quyết',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: '23',
-      trangthai_invoice: 'not enough'     
-    },{
-      mahp_invoice:'m6',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: '23',
-      trangthai_invoice: 'not enough'     
-    },
-    {
-      mahp_invoice:'m7',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: '23',
-      trangthai_invoice: 'not enough'     
-    },{
-      mahp_invoice:'m8',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'offline',
-      thoigian_invoice: 'sáng thứ 3,6',
-      tuanhoc_invoice: '234567',
-      sosv_invoice: 23,
-      trangthai_invoice: 'not enough'     
-    },
-  ]
-
-
-
- 
+  public filterString = "";
+  public filtered;
+  public invoicess:any[];
   ngOnInit() {
-    this.onFilterChange();
+       
+
+    this._pro5.getProfile().subscribe((response:any)=>{
+      this.pro5=response[0];});
+
+
+    this._lcos.getlistClassRegistionedOfStudent().subscribe(
+      (res)=>{
+        this._listClassRegistionedOfStudent=res;
+      });
+
+
+      this._lco.getListClassOpen().subscribe((res:any)=>{
+        this.filtered=res;
+        console.log(res);
+      });
+      
   }
+  public list:any=
+  [
+    {hoten: 'Nguyen Thi Mai', diemthi:9},
+    {hoten: 'Tran Thi Anh', diemthi:7.5},
+    { hoten: 'Hoang Thi Dung', diemthi:8.3}
+  ];
+  catten(a:string){
+    let n=a.lastIndexOf(' ');
+    return a.substr(n+1)+ ' '+a.substr(0,n);
+  }
+  SortDownSL(){
+    this.filtered.sort((a,b)=>{
+      if( a.slsv>b.slsv) return -1;
+      else if( a.slsv<b.slsv) return 1;
+      else return 0;
+    })
+  }
+  SortUpSL(){
+    this.filtered.sort((a,b)=>{
+      if( a.slsv>b.slsv) return 1;
+      else if( a.slsv<b.slsv) return -1;
+      else return 0;
+    })
+  }
+  SortDownTC(){
+    this.filtered.sort((a,b)=>{
+      if( a.number_of_credits>b.number_of_credits) return -1;
+      else if( a.number_of_credits<b.number_of_credits) return 1;
+      else return 0;
+    })
+  }
+  SortUpTC(){
+    this.filtered.sort((a,b)=>{
+      if( a.number_of_credits>b.number_of_credits) return 1;
+      else if( a.number_of_credits<b.number_of_credits) return -1;
+      else return 0;
+    })
+  }
+
+
+  logout() {
+    this.authenticationService.logout();
+  } 
+ 
+
   confirmRegis(x){
   if(confirm("Bạn có chắc chắn muốn đăng kí học học phần này?")) {
     console.log(x);
@@ -120,15 +105,8 @@ deleteSingleSubject(){
     console.log('deleted');
   }
 }
-  onFilterChange() {
-    this.filtered = this.invoices.filter((invoice) => this.isMatch(invoice));
-  }
+ 
 
-  isMatch(item) {
-    if (item instanceof Object) {
-      return Object.keys(item).some((k) => this.isMatch(item[k]));
-    } else {
-      return item.toString().indexOf(this.filterString) > -1
-    }
-  }
+ 
+
 }

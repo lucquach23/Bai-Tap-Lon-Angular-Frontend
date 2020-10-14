@@ -8,6 +8,8 @@ import { FileNotFoundComponent } from './shared/file-not-found/file-not-found.co
 import { RoleGuard } from './lib/auth.guard';
 import { Role } from './models/role';
 import { AuthGuard } from './lib/auth.guard';
+import { Page404Component } from './page404/page404.component';
+
 const routes: Routes = [
   {
     path: 'login',
@@ -15,20 +17,24 @@ const routes: Routes = [
   },
   {
     path: 'register-sv',component:RegisPageComponent ,
-    // canActivate: [AuthGuard],
-    // data: { roles: [Role.Sv] },
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Sv] }
 
   },
   {
     path: 'register-gv',component:RegisPageGVComponent,
-    // canActivate: [AuthGuard],
-    // data: { roles: [Role.Gv] },
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Gv] }
   },
   {
     path: '',
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
-    // canActivate: [AuthGuard],
-    // data: { roles: [Role.Admin] },
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] },
+  },
+  {
+    path: 'trang-khong-ton-tai',
+    component:Page404Component
   },
   {
     path: '**',

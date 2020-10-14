@@ -19,7 +19,9 @@ export const mainRoutes: Routes = [
       path: '', component: MainComponent,
       children: [
           {
-              path: '', component: DashboardComponent
+              path: '', component: DashboardComponent,
+              // canActivate: [RoleGuard],
+              // data: { roles: [Role.Admin] },
           },
           {
             path: 'not-found',
@@ -32,26 +34,26 @@ export const mainRoutes: Routes = [
           {
               path: 'giang-vien', 
               loadChildren: () => import('./giangvien/giangvien.module').then(m => m.GiangVienModule),
-              // canActivate: [RoleGuard],
-              // data: { roles: [Role.Admin] },
+              canActivate: [RoleGuard],
+              data: { roles: [Role.Admin] },
           },
           {
             path: 'sinh-vien',  
             loadChildren: () => import('./sinhvien/sinhvien.module').then(m => m.SinhVienModule),
-            // canActivate: [RoleGuard],
-            //   data: { roles: [Role.Admin] },
+            canActivate: [RoleGuard],
+              data: { roles: [Role.Admin] },
         },
           {
             path: 'lop-mo',  
             loadChildren: () => import('./user/user.module').then(m => m.UserModule),
-            // canActivate: [RoleGuard],
-            //   data: { roles: [Role.Admin] },
+            canActivate: [RoleGuard],
+              data: { roles: [Role.Admin] },
         },
           {
               path: 'hoc-phan', 
               loadChildren: () => import('./hocphan/hocphan.module').then(m => m.HocPhanModule),
-              // canActivate: [RoleGuard],
-              // data: { roles: [Role.Admin] },
+              canActivate: [RoleGuard],
+              data: { roles: [Role.Admin] },
           },
       ]
   }
