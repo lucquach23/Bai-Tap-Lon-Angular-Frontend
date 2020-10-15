@@ -88,7 +88,7 @@
             <!-- [routerLink]="['/hero', r.mahp_invoice]" -->
             <div style="display: inline; ">
                 <h4>Danh sách lớp đã đăng kí</h4>          
-                <button (click)="deleteClass()"  style="float: right; position: static;" class="btn btn-success">Xoá các lớp chọn</button>
+                <button (click)="deleteAllClass()"  style="float: right; position: static;" class="btn btn-success">Xoá các lớp chọn</button>
             </div>
             
             <table border="1">
@@ -120,12 +120,12 @@
                     <td>{{item.time }}</td>
                     <td>{{item.week }}</td>
                     <td>{{item.room }}</td>
-                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject()"><i style="color: red;" class="fa fa-times"></i></a></td>             
+                    <td style="cursor: pointer;"><a (click)="deleteSingleSubject(item.id_ClassRegister)"><i style="color: red;" class="fa fa-times"></i></a></td>             
                 </tr>
                 
                 
                 <tr>
-                    <td colspan="11">Tổng tín chỉ đăng kí : 14</td>
+                    <td colspan="11">Tổng tín chỉ đăng kí : {{sumTC}}</td>
                     
                 </tr>
                 <tr>

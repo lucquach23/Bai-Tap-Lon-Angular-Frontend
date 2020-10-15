@@ -3,3 +3,8 @@ export enum Role {
     Admin = 'Admin',
     Sv='Sv'
 }
+
+export class themCO {
+    IdClassRegister:string;
+    IdStudent:string;
+}
