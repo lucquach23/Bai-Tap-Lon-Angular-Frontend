@@ -13,6 +13,7 @@ export class ProfileService {
   private apiUrl='https://localhost:44351/api/Accounts/getAccByUserName/'+this.authenticationService.userValue.userName;
   private apiUrlGv='https://localhost:44351/api/Accounts/getInfoGv/'+this.authenticationService.userValue.userName;
   private apiListsub='https://localhost:44351/api/ClassRegistion/getListSubject/'+this.authenticationService.userValue.id_faculty;
+  private apiLSGv='https://localhost:44351/api/ClassRegisters/layLopGvDaDangKi/'+this.authenticationService.userValue.userName;
   getProfile():Observable<any[]>
   {
     return this._http.get<any[]>(this.apiUrl);
@@ -24,5 +25,9 @@ export class ProfileService {
   getListSubject()
   {
     return this._http.get<(any[])>(this.apiListsub);
+  }
+  laydanhsachhocphandadangki()
+  {
+    return this._http.get<(any[])>(this.apiLSGv);
   }
 }
