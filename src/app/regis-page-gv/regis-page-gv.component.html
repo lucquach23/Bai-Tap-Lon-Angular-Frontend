@@ -21,14 +21,17 @@
         <a (click)="logout()" style="margin: 20px;" href="#"><i style="font-size: 30px;" class="fa fa-sign-out"></i>  </a>
     </nav>
     <div class="main-content">
-        <aside>
-            <ul>
-                <li>Mã giảng viên: <b>20179999</b></li>
-                <li>Họ tên: <b>Nguyễn Hoàng Điệp</b></li>
-                <li>Bộ Môn: <b>Công nghệ phần mềm</b></li>               
-                <li>Khoa: <b>Công nghệ thông tin</b></li>
-                <li>Học vị: <b>Thạc sĩ</b></li>
+        <aside style="width: 254px;">
+            <ul *ngFor="let i of pro5">
                
+                    <li>Mã giảng viên: <b>{{i.idLecturers}}</b></li>
+                    <li>Họ tên: <b>{{i.name}}</b></li>
+                    <li>Bộ Môn: <b>{{i.idDepartmentNavigation.nameDepartment}}</b></li>               
+                    <li>Khoa: <b>{{i.idDepartmentNavigation.idFacultyNavigation.nameFaculty}}</b></li>
+                    <li>Học vị: <b>{{i.idDegree}}</b></li>
+                    <li>Email: <b>{{i.email}}</b></li>
+                    <li>Tel: <b>{{i.phone}}</b></li>
+              
                 <!-- <li><a class="link" href="#">Thông tin danh sách lớp mở</a></li> -->
             </ul>
         </aside>
@@ -38,32 +41,32 @@
                 <span>Nhập từ khoá:</span>
               
                    
-                <input [(ngModel)]="filterString" (ngModelChange)="onFilterChange()" />
-                <div class="table-wrapper-scroll-y my-custom-scrollbar">                   
+                <input [(ngModel)]="filterString"  />
+                <div style="height: 400px;" class="table-wrapper-scroll-y my-custom-scrollbar">                   
                     <table border="1" class="table table-bordered table-striped mb-0">
                       <thead>
                         <tr>
                           <th >TT</th>
-                          <th >Tên học phần</th>
                           <th>Mã HP</th>
-                          <th >Số TC</th>
+                          <th >Tên học phần</th>                         
+                            <th>
+                                <i style="cursor: pointer;" (click)="SortUpTC()" class="fa fa-arrow-up"></i>
+                                    Số TC
+                                <i style="cursor: pointer;" (click)="SortDownTC()" class="fa fa-arrow-down"></i>
+                            </th>
                           <th >Loại</th>
                           <th>Khoa phụ trách</th>
-                          <!-- <th>Thứ</th>
-                          <th>Thời gian</th>
-                          <th>Tuần học</th>
-                          <th>Phòng (dự kiến)</th> -->
                           <th>Đăng kí</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let r of filtered;let i=index">
+                        <tr *ngFor="let r of filtered | search:filterString;let i=index">
                             <td>{{i+1}}</td>
-                            <td>{{ r.tenhp_invoice}}</td>
-                            <td>{{r.mahp_invoice}}</td>
-                            <td>{{ r.sotc_invoice}}</td>
-                            <td>{{r.phuongthuc_invoice }}</td>
-                            <td>{{ r.khoaphutrach}}</td>
+                            <td>{{ r.id_subject}}</td>
+                            <td>{{r.name_subject}}</td>
+                            <td>{{ r.number_of_credits}}</td>
+                            <td>{{r.type }}</td>
+                            <td>{{ r.name_faculty}}</td>
                             
                             <th style="cursor: pointer;">
                                 <button style="border: none;background-color: white;"  data-toggle="modal" data-target="#myModal"><i style="color: green;" class="fa fa-check"></i></button>
@@ -82,7 +85,7 @@
                                                     <div>
                                                         <div class="form-group">
                                                             Mã HP: 
-                                                            <input class="form-control" disabled type="text" #name="ngModel" ngModel name="mahp"/>
+                                                            <input  class="form-control" disabled type="text" #name="ngModel" ngModel name="mahp"/>
                                                         </div>
                                                         
                                                         <div class="form-group">
@@ -237,7 +240,7 @@
     <footer>
         TRƯỜNG ĐẠI HỌC SƯ PHẠM KĨ THUẬT HƯNG YÊN<br />
        cs2: Nhân Hoà, Mỹ Hào, Hưng Yên
-        
+        <button (click)="test()"> test</button>
     </footer>
 </body>
 </html>

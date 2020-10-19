@@ -5,4 +5,5 @@ export class User {
     pass: string; 
     role: Role;
     token?: string;
+    id_faculty:string;
 }

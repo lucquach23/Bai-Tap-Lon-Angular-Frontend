@@ -39,7 +39,6 @@ export class RegisPageComponent extends BaseComponent implements OnInit{
   public invoicess:any[];
   ngOnInit() {
        
-
     this._pro5.getProfile().subscribe((response:any)=>{
       this.pro5=response[0];});
 

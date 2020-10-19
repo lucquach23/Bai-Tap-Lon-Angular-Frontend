@@ -11,6 +11,7 @@ export class listClassOpen {
   constructor(private _http:HttpClient) { }
   private apiUrl='https://localhost:44351/api/ClassRegistion/getListSubjectClass';
   private addurl ='https://localhost:44351/api/ListCrs';
+  
   getListClassOpen():Observable<any[]>
   {
      return this._http.get<any[]>(this.apiUrl);

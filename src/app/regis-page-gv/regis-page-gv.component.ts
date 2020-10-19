@@ -4,103 +4,100 @@ import { FileUpload } from 'primeng/fileupload';
 import { FormBuilder, Validators} from '@angular/forms';
 import { BaseComponent } from './../common/base-component';
 import { AuthenticationService } from '../lib/authentication.service';
+import {ProfileService} from '../service/profile.service';
 @Component({
   selector: 'app-regis-page-gv',
   templateUrl: './regis-page-gv.component.html',
-  styleUrls: ['./regis-page-gv.component.css']
+  styleUrls: ['./regis-page-gv.component.css'],
+  providers:[ProfileService]
 })
 export class RegisPageGVComponent  implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) {}
-  submitted = false;
-  public listCity=[
-    {id:1,name:'Sáng: 7:45-11:00'},
-    {id:2,name:'Chiều: 13:30-16:45'},
-    {id:3,name:'Tối: 17:00-20:30'},
-  ]
+  constructor(private authenticationService: AuthenticationService,
+    private _pro5:ProfileService,) {}
+
+    public pro5:any[];
+    submitted = false;
+    public listCity=[
+      {id:1,name:'Sáng: 7:45-11:00'},
+      {id:2,name:'Chiều: 13:30-16:45'},
+      {id:3,name:'Tối: 17:00-20:30'},
+    ];
+
+    public filtered;
+    public filterString = "";
+
   onSubmit(value: any) {
     console.log(value);
   }
 
+ 
+  ngOnInit() {
+    console.log(this.authenticationService.userValue)
+   
+    this._pro5.getListSubject().subscribe((res:any)=>{
+      this.filtered=res;
+    });
+    this.test();
+  }
+  
+
+
+
+  SortDownTC(){
+    this.filtered.sort((a,b)=>{
+      if( a.number_of_credits>b.number_of_credits) return -1;
+      else if( a.number_of_credits<b.number_of_credits) return 1;
+      else return 0;
+    })
+  }
+  SortUpTC(){
+    this.filtered.sort((a,b)=>{
+      if( a.number_of_credits>b.number_of_credits) return 1;
+      else if( a.number_of_credits<b.number_of_credits) return -1;
+      else return 0;
+    })
+  }
+
+
+
+
+
   logout() {
     this.authenticationService.logout();
   } 
-  filterString = "";
-  filtered;
 
-  invoices:any[] =[
+  test(){
+  this._pro5.getProfileGV().subscribe((response:any)=>{
+    this.pro5=response;});
+    for(let i of this.pro5)
     {
-     mahp_invoice:'m1',
-      tenhp_invoice: 'Toán rời rạc',
-      // giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT',
-      // thoigian_invoice: 'sáng thứ 3,6',
-      // tuanhoc_invoice: '234567',
-      // sosv_invoice: 23,
-      // trangthai_invoice: 'not enough'     
-    },{
-      mahp_invoice:'m2',
-      tenhp_invoice: 'Mạng máy tính',
-      giangvien_invoice: 'Vũ khánh quý',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT',    
-    },
-    {
-      mahp_invoice:'m3',
-      tenhp_invoice: 'Cấu trúc dữ liệu và giải thuật',
-      giangvien_invoice: 'Nguyễn hải năng',
-      sotc_invoice: '4',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT', 
-    },{
-      mahp_invoice:'m4',
-      tenhp_invoice: 'Chuyên đề 3',
-      giangvien_invoice: 'Vũ Xuân thắng',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT',  
-    },
-    {
-      mahp_invoice:'m5',
-      tenhp_invoice: 'Web API',
-      giangvien_invoice: 'Nguyễn Văn Quyết',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT', 
-    },{
-      mahp_invoice:'m6',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-      khoaphutrach:'CNTT',  
-    },
-    {
-      mahp_invoice:'m7',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT',
-    },{
-      mahp_invoice:'m8',
-      tenhp_invoice: 'Toán rời rạc',
-      giangvien_invoice: 'Nguyễn Quang Hoan',
-      sotc_invoice: '3',
-      phuongthuc_invoice: 'TH+LT',
-       khoaphutrach:'CNTT',
-    },
-  ]
+      console.log
+      (i.idLecturers,i.name,i.idDegree,
+        i.email,i.phone,
+        i.idDepartmentNavigation.nameDepartment,
+        i.idDepartmentNavigation.idFacultyNavigation.nameFaculty);
+    }
 
-
-
- 
-  ngOnInit() {
-    this.onFilterChange();
   }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
   confirmRegis(x){
   if(confirm("Bạn có chắc chắn muốn đăng kí học học phần này?")) {
@@ -117,16 +114,5 @@ deleteSingleSubject(){
     console.log('deleted');
   }
 }
-  onFilterChange() {
-    this.filtered = this.invoices.filter((invoice) => this.isMatch(invoice));
-  }
-
-  isMatch(item) {
-    if (item instanceof Object) {
-      return Object.keys(item).some((k) => this.isMatch(item[k]));
-    } else {
-      return item.toString().indexOf(this.filterString) > -1
-    }
-  }
  
 }
