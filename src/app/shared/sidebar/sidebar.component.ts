@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   public menus = [
   {name :'Lớp đăng kí', url:'',icon:'edit',
   childs:[
-    {name:'Danh sách lớp mở',url:'/lop-mo/dslm'},
+    {name:'Danh sách lớp mở',url:'/lop-mo/danhsachlopmo'},
     {name:'Học phần', url:'/hoc-phan/dshp'},
     {name:'Giảng Viên', url:'/giang-vien/dsgv'},
     {name:'Sinh Viên', url:'/sinh-vien/dssv'},
