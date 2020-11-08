@@ -58,6 +58,7 @@ import { ErrorInterceptor } from './lib/error.interceptor';
 import { JwtInterceptor } from './lib/jwt.interceptor';
 import { Page404Component } from './page404/page404.component';
 import { SearchPipe } from './search.pipe';
+import {TableModule} from 'primeng/table';
 import * as $ from "jquery";
 @NgModule({
   declarations: [

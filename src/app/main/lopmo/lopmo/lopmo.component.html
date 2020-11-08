@@ -12,10 +12,54 @@
       </p>
     </div>
   </div>
-  <div class="row">
-  
-    <div style="margin-left: 10px;" class="col-xs-12"> 
-      danh sách lớp mo
+  <div class="row"> 
+    <div style="margin-left: 10px;" class="col-8"> 
+      <div  class="container" style="display: flex;margin-top: 10px;text-align: left;margin-bottom: 50px;">
+        <!-- <form (ngSubmit)="takeIDFaculty(f)" #f="ngForm">
+          <select style="width: 300px; "  #corporation name="selectedCorp" required>
+           
+              <option *ngFor="let item of listFaculty" [value]="item.idFaculty">{{item.nameFaculty}}</option>
+                    
+          </select>
+          <button type="submit">Tìm kiếm</button>
+        </form> -->
+        <div>
+          <select (change)="selectOption($event.target.value)"
+          [(ngModel)]="selected">
+          <option [value]="item.idFaculty" *ngFor="let item of listFaculty">{{item.nameFaculty}}</option>
+           </select>
+        </div> 
+        
+
+      </div>
+      <div>
+        <table *ngIf="show" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+ </div>
 

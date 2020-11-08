@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     RouterModule.forChild([
       {
-        path: 'dslm',
+        path: 'us',
         component: UserComponent,
       },
   ]),  

@@ -11,28 +11,39 @@ export class listClassOpen {
   constructor(private _http:HttpClient) { }
   private apiUrl='https://localhost:44351/api/ClassRegistion/getListSubjectClass';
   private addurl ='https://localhost:44351/api/ListCrs';
-  
+  private apiListFaculty='https://localhost:44351/GetListFacuty';
+  private apiGetClassOpenFaculty='https://localhost:44351/api/ClassRegistion/getListClassOpenByIdFaculty/';
+
+  GetClassOpenFaculty(id:string):Observable<any[]>{
+    return this._http.get<any[]>(this.apiGetClassOpenFaculty+id);
+  }
+  getListFaculty():Observable<any[]>{
+    return this._http.get<any[]>(this.apiListFaculty);
+  }
+
+
   getListClassOpen():Observable<any[]>
   {
      return this._http.get<any[]>(this.apiUrl);
   }
   
-addclassR(themco1:themCO):Observable<themCO>
-{
-  return this._http.post<themCO>(this.addurl,themco1,httpOption)
-  .pipe(tap((s:themCO)=>console.log(`data= ${JSON.stringify(s)}`)),
-  catchError(err=>of(new themCO())));
-}
-deleteCO( obj: any) {
-  const body = JSON.stringify(obj);
-  return this._http
-    .post<any>('https://localhost:44351/api/ClassRegistion/deleteCO', body,httpOption)
-    .pipe(
-      map(res => {
-        return res;
-      })
-    );      
-}
+  addclassR(themco1:themCO):Observable<themCO>
+  {
+    return this._http.post<themCO>(this.addurl,themco1,httpOption)
+    .pipe(tap((s:themCO)=>console.log(`data= ${JSON.stringify(s)}`)),
+    catchError(err=>of(new themCO())));
+  }
+
+  deleteCO( obj: any) {
+    const body = JSON.stringify(obj);
+    return this._http
+      .post<any>('https://localhost:44351/api/ClassRegistion/deleteCO', body,httpOption)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );      
+  }
 
 
 
