@@ -23,13 +23,13 @@
       <div  class="container" style=" display: flex;margin-top: 20px;text-align: left;margin-bottom: 50px;">      
         <div>
           Chọn khoa: 
-          <select (change)="selectOption($event.target.value)">
+          <select [(ngModel)]="selected" (change)="selectOption($event.target.value)">
           <option [value]="item.idFaculty" *ngFor="let item of listFaculty">{{item.nameFaculty}}</option>
            </select>
         </div> 
         <div *ngIf="showgv" style="margin-left: 60px;">
           Giảng viên:
-          <select (change)="select_idgv($event.target.value)">
+          <select [(ngModel)]="selected" (change)="select_idgv($event.target.value)">
             <option [value]="item.id_lecturers" *ngFor="let item of listgv2info">{{item.id_lecturers}} - {{item.name}}</option>
              </select>
         </div>
@@ -52,7 +52,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let i of listCObyidgv">
+            <!-- <tr *ngIf="checkdb"><i style="color: red;">Giảng viên chưa đăng kí giảng dạy học phần nào</i></tr> -->
+            <tr  *ngFor="let i of listCObyidgv">
               <td>{{ i.name_subject}}</td>
               <td>{{ i.number_of_credits}}</td>
               <td>{{i.type }}</td>

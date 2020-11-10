@@ -23,6 +23,7 @@ export class HocphanComponent implements OnInit {
   public showhp=false;
   public showtb=false;
   public listsvdkhp;
+  selected: string = "";
   getidhp(x){
     this.showtb=true;
     this._lco.getlistsvhp(x.value).subscribe((res:any)=>{

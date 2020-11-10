@@ -12,7 +12,7 @@ export class ProfileService {
   constructor(private _http:HttpClient,private authenticationService: AuthenticationService) { }
   private apiUrl='https://localhost:44351/api/Accounts/getAccByUserName/'+this.authenticationService.userValue.userName;
   private apiUrlGv='https://localhost:44351/api/Accounts/getInfoGv/'+this.authenticationService.userValue.userName;
-  private apiListsub='https://localhost:44351/api/ClassRegistion/getListSubject/'+this.authenticationService.userValue.id_faculty;
+  private apiListsub='https://localhost:44351/api/ClassRegistion/getListSubject/'+this.authenticationService.userValue.idFaculty;
   private apiLSGv='https://localhost:44351/api/ClassRegisters/layLopGvDaDangKi/'+this.authenticationService.userValue.userName;
   getProfile():Observable<any[]>
   {

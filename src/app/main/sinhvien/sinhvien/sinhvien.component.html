@@ -6,16 +6,100 @@
       </li>
       <li class="active">Danh sách sinh viên</li>
     </ul>
-    <div class="nav-search">
-      <p class="pull-right no-margin">
-       
-      </p>
-    </div>
   </div>
   <div class="row">
   
-    <div style="margin-left: 10px;" class="col-xs-12"> 
-     danh sách sinh viên
+    <div  class="col-xs-12"> 
+      <div style=" display: flex;">
+        <div class="col-xs-4">
+          <form >
+            <span>Mã SV</span>
+          <input ngModel #idsv name="idsv" type="text">
+          <button (click)="findsv(idsv)" type="submit">Tìm kiếm</button>
+          </form>        
+        </div>
+      </div>
+
+      <div  class="container" style=" display: flex;margin-top: 20px;text-align: left;margin-bottom: 50px;">      
+        <div>
+          Chọn khoa: 
+          <select [(ngModel)]="selected" (change)="selectOption($event.target.value)">
+          <option [value]="item.idFaculty" *ngFor="let item of listFaculty">{{item.nameFaculty}}</option>
+           </select>
+        </div> 
+        <div *ngIf="showl" style="margin-left: 60px;">
+          Lớp:
+          <select [(ngModel)]="selected" (change)="select_idl($event.target.value)">
+            <option [value]="item.id_lecturers" *ngFor="let item of listclasmajor">{{item.id_lecturers}} - {{item.name}}</option>
+            <option>xxxx</option>
+             </select>
+        </div>
+      </div>
+      <div>
+        <table *ngIf="show_tb_dsl" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>danh sach lop</th>
+              <th>Số TC</th>
+              <th>Loại</th>
+              <th>Giảng viên</th>
+              <th>Email</th>
+              <th>Thứ</th>
+              <th>Thời gian</th>
+              <th>Tuần</th>
+              <th>Phòng</th>
+              <th>SLSV</th>
+              <th>Tác vụ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let i of list_tb_dsl">
+              <td>{{ i.name_subject}}</td>
+              <td>{{ i.number_of_credits}}</td>
+              <td>{{i.type }}</td>
+              <td>{{ i.name}}</td>
+              <td>{{i.email }}</td>
+              <td>{{i.thu }}</td>
+              <td>{{i.time }}</td>
+              <td>{{ i.week}}</td>
+              <td>{{ i.room}}</td>
+              <td>{{i.slsv}}</td>
+             
+            </tr>
+           
+          </tbody>
+        </table>
+    
+        <table *ngIf="show_tb_dslcsv" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Mã lớp mở</th>
+              <th>Tên HP</th>
+              <th>Số TC</th>
+              <th>Giảng viên</th>
+              <th>SĐT</th>
+              <th>Thứ</th>
+              <th>Thời gian</th>
+              <th>Tuần</th>
+              <th>Phòng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of list_tb_dslcsv">
+              <td>{{item.id_ClassRegister}}</td>  
+              <td>{{item.nameSubject }}</td>    
+              <td>{{item.number_of_credits}}</td>
+              <td>{{item.name }}</td>
+              <td>{{item.phone }}</td>               
+              <td>{{item.thu }}</td>
+              <td>{{item.time }}</td>
+              <td>{{item.week }}</td>
+              <td>{{item.room }}</td>           
+          </tr>
+           
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 

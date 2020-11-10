@@ -22,13 +22,13 @@
       <div  class="container" style=" display: flex;margin-top: 20px;text-align: left;margin-bottom: 50px;">      
         <div>
           Chọn khoa: 
-          <select (change)="selectOption($event.target.value)">
+          <select [(ngModel)]="selected"(change)="selectOption($event.target.value)">
           <option [value]="item.idFaculty" *ngFor="let item of listk">{{item.nameFaculty}}</option>
            </select>
         </div> 
         <div *ngIf="showhp" style="margin-left: 60px;">
           Học phần:
-          <select (change)="select_hp($event.target.value)">
+          <select [(ngModel)]="selected" (change)="select_hp($event.target.value)">
             <option [value]="item.idSubject" *ngFor="let item of listhp">{{item.idSubject}} - {{item.nameSubject}}</option>
              </select>
         </div>

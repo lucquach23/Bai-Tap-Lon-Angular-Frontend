@@ -42,15 +42,17 @@ export class GiangvienComponent implements OnInit {
     })
     //console.log(id);
   }
+  selected: string = "";
   public listCObyidgv;
+  //public checkdb;
   select_idgv(id:string)
   {
     this.showtb=true;
     this._lco.ClassCObyidgv(id).subscribe((res:any)=>{
       this.listCObyidgv=res;
-      //console.log(this.listCObyFaculty);
     });
-    console.log(id);
+    // if(this.listCObyidgv==null) this.checkdb=true;
+    // else this.checkdb=false;
   }
   public deleteCO(id)
   {

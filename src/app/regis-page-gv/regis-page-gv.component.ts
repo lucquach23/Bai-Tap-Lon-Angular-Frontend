@@ -41,6 +41,10 @@ export class RegisPageGVComponent  implements OnInit {
     public fg:FormGroup
     ngOnInit() :void{
       this.test();
+      this._pro5.getListSubject().subscribe((res:any)=>{
+        this.filtered=res;
+        //console.log(this.authenticationService.userValue.idFaculty)
+      });
     }
     test(){
       this._pro5.getProfileGV().subscribe((response:any)=>{

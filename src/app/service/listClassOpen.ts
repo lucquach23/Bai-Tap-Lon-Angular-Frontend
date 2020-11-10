@@ -17,6 +17,11 @@ export class listClassOpen {
   private apiClassCObyidgv='https://localhost:44351/api/ClassRegistion/getListClassOpenByIdgv/';
   private apilisthp='https://localhost:44351/api/Subjects/getListSubjectByIdFaculty/';
   private apigetlistsvhp='https://localhost:44351/api/ClassRegistion/laysvtheomahp/';
+  private apiListCObyidsv='https://localhost:44351/api/ClassRegistion/getClassOfStudentById/';
+  ListCObyidsv(id:string)
+  {
+    return this._http.get<any[]>(this.apiListCObyidsv+id);
+  }
   getlistsvhp(id:string)
   {
     return this._http.get<any[]>(this.apigetlistsvhp+id);
