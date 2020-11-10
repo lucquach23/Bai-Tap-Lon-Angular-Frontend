@@ -13,6 +13,10 @@ import { UnauthorizedComponent } from '../shared/unauthorized/unauthorized.compo
 import { FileNotFoundComponent } from '../shared/file-not-found/file-not-found.component';
 import { RoleGuard } from '../lib/auth.guard';
 import { Role } from '../models/role';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+//import { NgModule } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 export const mainRoutes: Routes = [
   {
       path: '', component: MainComponent,
@@ -74,7 +78,7 @@ export const mainRoutes: Routes = [
   ],
   imports: [
     CommonModule,
-
+    FormsModule,
     RouterModule.forChild(mainRoutes)
   ]
 })

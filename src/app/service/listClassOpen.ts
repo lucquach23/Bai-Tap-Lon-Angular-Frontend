@@ -13,7 +13,24 @@ export class listClassOpen {
   private addurl ='https://localhost:44351/api/ListCrs';
   private apiListFaculty='https://localhost:44351/GetListFacuty';
   private apiGetClassOpenFaculty='https://localhost:44351/api/ClassRegistion/getListClassOpenByIdFaculty/';
-
+  private api2info2gv='https://localhost:44351/api/ClassRegistion/get2infogv/'; 
+  private apiClassCObyidgv='https://localhost:44351/api/ClassRegistion/getListClassOpenByIdgv/';
+  private apilisthp='https://localhost:44351/api/Subjects/getListSubjectByIdFaculty/';
+  private apigetlistsvhp='https://localhost:44351/api/ClassRegistion/laysvtheomahp/';
+  getlistsvhp(id:string)
+  {
+    return this._http.get<any[]>(this.apigetlistsvhp+id);
+  }
+  listhpbyk(id:string)
+  {
+    return this._http.get<any[]>(this.apilisthp+id);
+  }
+  ClassCObyidgv(id:string){
+    return this._http.get<any[]>(this.apiClassCObyidgv+id);
+  }
+  get2infogv(id:string){
+    return this._http.get<any[]>(this.api2info2gv+id);
+  }
   GetClassOpenFaculty(id:string):Observable<any[]>{
     return this._http.get<any[]>(this.apiGetClassOpenFaculty+id);
   }

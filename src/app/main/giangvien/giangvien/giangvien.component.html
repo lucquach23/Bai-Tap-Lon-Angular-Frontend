@@ -6,16 +6,227 @@
       </li>
       <li class="active">Danh sách giảng viên đăng kí giảng dạy</li>
     </ul>
-    <div class="nav-search">
-      <p class="pull-right no-margin">
-       
-      </p>
-    </div>
+    
   </div>
   <div class="row">
+    <div  class="col-xs-12"> 
+      <div style=" display: flex;">
+        <div class="col-xs-4">
+          <form >
+            <span>Mã GV</span>
+          <input ngModel #idgv name="idgv" type="text">
+          <button (click)="getidgv(idgv)" type="submit">Tìm kiếm</button>
+          </form>        
+        </div>
+      </div>
+
+      <div  class="container" style=" display: flex;margin-top: 20px;text-align: left;margin-bottom: 50px;">      
+        <div>
+          Chọn khoa: 
+          <select (change)="selectOption($event.target.value)">
+          <option [value]="item.idFaculty" *ngFor="let item of listFaculty">{{item.nameFaculty}}</option>
+           </select>
+        </div> 
+        <div *ngIf="showgv" style="margin-left: 60px;">
+          Giảng viên:
+          <select (change)="select_idgv($event.target.value)">
+            <option [value]="item.id_lecturers" *ngFor="let item of listgv2info">{{item.id_lecturers}} - {{item.name}}</option>
+             </select>
+        </div>
+      </div>
+      <div>
+        <table *ngIf="showtb" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Tên HP</th>
+              <th>Số TC</th>
+              <th>Loại</th>
+              <th>Giảng viên</th>
+              <th>Email</th>
+              <th>Thứ</th>
+              <th>Thời gian</th>
+              <th>Tuần</th>
+              <th>Phòng</th>
+              <th>SLSV</th>
+              <th>Tác vụ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of listCObyidgv">
+              <td>{{ i.name_subject}}</td>
+              <td>{{ i.number_of_credits}}</td>
+              <td>{{i.type }}</td>
+              <td>{{ i.name}}</td>
+              <td>{{i.email }}</td>
+              <td>{{i.thu }}</td>
+              <td>{{i.time }}</td>
+              <td>{{ i.week}}</td>
+              <td>{{ i.room}}</td>
+              <td>{{i.slsv}}</td>
+              <td style="cursor: pointer;">
+                <a style="margin-right: 15px;" (click)="deleteCO(i.id_ClassRegister)">
+                    <i style="color: red;" class="fa fa-times"></i>
+                </a> |
+                <button (click)="sua(i.id_lecturers,i.id_ClassRegister,
+                i.id_subject,i.number_of_credits,i.name_subject,i.type,i.room,i.thu,i.time,i.week)"  
+                style="border: none;background-color: white;"  
+                data-toggle="modal" data-target="#myModal">
+                    <i style="color: green;" class="fa fa-eraser"></i>
+                </button>
+            </td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   
-    <div style="margin-left: 10px;" class="col-xs-12"> 
-     danh sách giảng viên
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog"> 
+  
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Chỉnh sửa thông tin lớp mở</h4>
+        </div>
+        <div  class="container modal-body">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" style="margin-left: 25px;"  action="#">
+                <div style="display: flex;">
+                    <div >
+                      <div class="form-group">
+                        Mã lớp mở: 
+                        <input disabled   class="form-control"  type="text" value="{{maco}}" />
+                    </div>
+                      
+                    <div class="form-group">
+                      Mã GV: 
+                      <input disabled   class="form-control"  type="text" value="{{magv}}" />
+                  </div>
+                         <div class="form-group">
+                            Số TC: 
+                            <input disabled value="{{ number_of_credits}}" class="form-control" type="text"  />
+                        </div>
+                        <div class="form-group">
+                            Tên HP: 
+                            <input disabled style="width: 380px;
+                            position: absolute;" value="{{ name_subject}}"  class="form-control" type="text" 
+                             />
+                        </div>
+                    </div>
+                    <div style="margin-left: 35px;">
+                        <div class="form-group">
+                            Phương thức: 
+                            <input disabled value="{{ type}}" class="form-control"  type="text"
+                              />
+                        </div>
+                        <div class="form-group">
+                          Mã HP: 
+                          <input disabled   class="form-control"  type="text" value="{{id_subject}}" />
+                      </div>
+                      
+                        <!-- <div class="form-group">
+                            Khoa phụ trách: 
+                            <input disabled class="form-control"  value="{{ name_faculty}}"  type="text"
+                              />
+                        </div> -->
+                    </div>
+                </div>              
+                <div style="display: flex; margin-top: 33px;">
+                    <div>
+                        <div class="form-group">
+                            Thời gian: 
+                            <select class="form-control" required #time="ngModel" name="time" ngModel >
+                                <option selected="" *ngFor="let city of listCity" [value]="city.id">{{city.name}}</option>
+                            </select>        
+                            <div *ngIf="time.errors &&(time.drity || time.touched)">
+                                <div [hidden]="!time.errors.required">
+                                    <i style="color: red;">Yêu cầu chọn thời gian!</i>
+                                </div>
+                            </div>              
+                        </div>
+                    </div>
+                    <div style="margin-left: 68px;">
+                        <div class="form-group">
+                            Phòng (dự kiến): 
+                            <input value="{{room}}" minlength="3" 
+                            maxlength="3" placeholder="VD: 205" 
+                            class="form-control"  type="text"  
+                            ngModel name="phong" pattern="^[1-9][0-9]{2}$" required #phong="ngModel"/>
+                            <div *ngIf="phong.errors &&(phong.drity || phong.touched)">
+                                <div [hidden]="!phong.errors.required">
+                                    <i style="color: red;">Yêu cầu điền phòng!</i>
+                                </div>
+                                <div [hidden]="!phong.errors.minlength">
+                                    <i style="color: red;">Phòng sai!</i>
+                                </div>
+                                <div [hidden]="!phong.errors.pattern">
+                                    <i style="color: red;">Xem lại số phòng!</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div>
+                        <div>
+                            Thứ: 
+                            <input value="{{th}}" required  
+                            placeholder="VD: 2,3,4,..." 
+                            class="form-control"  type="text"  
+                            #thu="ngModel" ngModel name="thu"/>    
+                            <div *ngIf="thu.errors &&(thu.drity || thu.touched)">
+                                <div [hidden]="!thu.errors.required">
+                                    <i style="color: red;">Yêu cầu điền thứ!</i>
+                                </div> 
+                                <!-- <div [hidden]="!thu.errors.pattern">
+                                    <i style="color: red;">Định dạng không hợp lệ!</i>
+                                </div>    -->
+                            </div> 
+                            
+                            <!-- pattern="^[1-9][0-9]{6}$"                           -->
+                        </div>
+                    </div>
+                   
+                    <div style="margin-left: 35px;">
+                        <div >
+                            <div class="form-group">
+                                Tuần học(dự kiến): 
+                                <input value="{{week}}" required  placeholder="VD: 23456" pattern="\d{2,6}" class="form-control"  type="text" #tuan="ngModel" ngModel name="tuan"/>
+                                <div *ngIf="tuan.errors &&(tuan.drity || tuan.touched)">
+                                    <div [hidden]="!tuan.errors.pattern">
+                                        <i style="color: red;">Xem lại tuần!</i>
+                                    </div>
+                                    <div [hidden]="!tuan.errors.required">
+                                        <i style="color: red;">Yêu cầu điền tuần!</i>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <hr style="border: 1px" />
+               <div style="display: flex; margin-left: 60px;">
+                
+                <!-- <input style="width: 30px;" #id_ClassRegister="ngModel" ngModel name="id_ClassRegister"  value="{{id_ClassRegister}}" />
+                <input  style="width: 30px;" #id_lecturers="ngModel" ngModel name="id_lecturers"  value="{{id_lecturers}}" /> -->
+                   
+                <button  type="submit" [disabled]="!userForm.valid"  class="btn btn-primary">Lưu lại</button>
+  
+                <button type="button" style="margin-left: 20px;" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+               
+            </form>  
+        </div>
+        <div class="modal-footer">
+           
+          
+        </div>
+      </div>
+  
     </div>
   </div>
 

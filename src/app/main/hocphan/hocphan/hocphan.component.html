@@ -6,16 +6,63 @@
       </li>
       <li class="active">Danh sách học phần</li>
     </ul>
-    <div class="nav-search">
-      <p class="pull-right no-margin">
-       
-      </p>
-    </div>
   </div>
   <div class="row">
   
-    <div style="margin-left: 10px;" class="col-xs-12"> 
-      danh sach hoc phan
+    <div  class="col-xs-12"> 
+      <div style=" display: flex;">
+        <div class="col-xs-4">
+          <form >
+            <span>Mã HP</span>
+          <input ngModel #idhp name="idhp" type="text">
+          <button (click)="getidhp(idhp)" type="submit">Tìm kiếm</button>
+          </form>        
+        </div>
+      </div>
+      <div  class="container" style=" display: flex;margin-top: 20px;text-align: left;margin-bottom: 50px;">      
+        <div>
+          Chọn khoa: 
+          <select (change)="selectOption($event.target.value)">
+          <option [value]="item.idFaculty" *ngFor="let item of listk">{{item.nameFaculty}}</option>
+           </select>
+        </div> 
+        <div *ngIf="showhp" style="margin-left: 60px;">
+          Học phần:
+          <select (change)="select_hp($event.target.value)">
+            <option [value]="item.idSubject" *ngFor="let item of listhp">{{item.idSubject}} - {{item.nameSubject}}</option>
+             </select>
+        </div>
+      </div>
+      <div>
+        <table *ngIf="showtb" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Mã SV</th>
+              <th>Họ tên</th>
+              <th>Khoa</th>
+              <th>Lớp</th>
+              <th>Phone</th>
+              <th>Mail</th>
+              <th>GVCN</th>
+              <th>Phone GVCN</th>              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of listsvdkhp">
+              <td>{{ i.id_student}}</td>
+              <td>{{ i.name}}</td>
+              <td>{{i.name_faculty }}</td>
+              <td>{{ i.id_class}}</td>
+              <td>{{i.phone }}</td>
+              <td>{{i.email }}</td>
+              <td>{{i.gvcn }}</td>
+              <td>{{ i.phone_gvcn}}</td>
+              
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 

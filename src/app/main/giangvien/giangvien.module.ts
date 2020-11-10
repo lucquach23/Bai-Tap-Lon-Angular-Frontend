@@ -1,13 +1,13 @@
 import { NgModule }      from '@angular/core';
 import {RouterModule} from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { GiangvienComponent }   from './giangvien/giangvien.component';
 
 
 @NgModule({
 
   imports: [
-    
     RouterModule.forChild([
       {
         path: 'dsgv',
@@ -21,3 +21,4 @@ import { GiangvienComponent }   from './giangvien/giangvien.component';
   providers: [],
 })
 export class GiangVienModule { }
+
