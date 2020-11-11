@@ -30,8 +30,7 @@
         <div *ngIf="showl" style="margin-left: 60px;">
           Lớp:
           <select [(ngModel)]="selected" (change)="select_idl($event.target.value)">
-            <option [value]="item.id_lecturers" *ngFor="let item of listclasmajor">{{item.id_lecturers}} - {{item.name}}</option>
-            <option>xxxx</option>
+            <option [value]="item.id_class" *ngFor="let item of listclasmajor">{{item.id_class}} - {{item.name_department}}</option>
              </select>
         </div>
       </div>
@@ -39,31 +38,28 @@
         <table *ngIf="show_tb_dsl" class="table table-bordered">
           <thead>
             <tr>
-              <th>danh sach lop</th>
-              <th>Số TC</th>
-              <th>Loại</th>
-              <th>Giảng viên</th>
+              <th>Mã SV</th>
+              <th>Họ tên</th>
+              <th>Sinh ngày</th>
+              <th>Địa chỉ</th>
               <th>Email</th>
-              <th>Thứ</th>
-              <th>Thời gian</th>
-              <th>Tuần</th>
-              <th>Phòng</th>
-              <th>SLSV</th>
-              <th>Tác vụ</th>
+              <th>Phone</th>
+              <th>Số lượng đ.kí</th>
+              <th>Tổng số TC</th>
+              
             </tr>
           </thead>
           <tbody>
             <tr  *ngFor="let i of list_tb_dsl">
-              <td>{{ i.name_subject}}</td>
-              <td>{{ i.number_of_credits}}</td>
-              <td>{{i.type }}</td>
+              <td>{{ i.id_student}}</td>
               <td>{{ i.name}}</td>
+              <td>{{i.birthday }}</td>
+              <td>{{ i.adress}}</td>
               <td>{{i.email }}</td>
-              <td>{{i.thu }}</td>
-              <td>{{i.time }}</td>
-              <td>{{ i.week}}</td>
-              <td>{{ i.room}}</td>
-              <td>{{i.slsv}}</td>
+              <td>{{i.phone }}</td>
+              <td>{{i.sldk }}</td>
+              <td>{{ i.tstc}}</td>
+              
              
             </tr>
            

@@ -18,6 +18,17 @@ export class listClassOpen {
   private apilisthp='https://localhost:44351/api/Subjects/getListSubjectByIdFaculty/';
   private apigetlistsvhp='https://localhost:44351/api/ClassRegistion/laysvtheomahp/';
   private apiListCObyidsv='https://localhost:44351/api/ClassRegistion/getClassOfStudentById/';
+  private api_class_major_faculty='https://localhost:44351/api/ClassRegistion/classMajorByFaculty/';
+  private api_class_major_id_class='https://localhost:44351/api/ClassRegistion/getClassMajorByIdClass/';
+
+ get_class_major_id_class(id:string)
+  {
+    return this._http.get<any[]>(this.api_class_major_id_class+id);
+  }
+  get_class_major_faculty(id:string)
+  {
+    return this._http.get<any[]>(this.api_class_major_faculty+id);
+  }
   ListCObyidsv(id:string)
   {
     return this._http.get<any[]>(this.apiListCObyidsv+id);

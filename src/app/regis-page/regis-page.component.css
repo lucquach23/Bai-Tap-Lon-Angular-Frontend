@@ -145,8 +145,6 @@
   .main-content main .input button {
     height: 33px;
     width: 190px;
-    /* background-color: #bdc3c7; */
-    /* border: 1px solid #7f8c8d; */
     cursor: pointer;
     padding: 5px;
     margin-bottom: 5px;
@@ -166,32 +164,8 @@
     padding: 10px;
   }
   
-  /* .main-content main table tr:first-child td {
-    background-color: #bdc3c7;
-  } */
-  
-  /* .main-content main table tr:last-child td {
-    background-color: #bdc3c7;
-    text-align: right;
-  } */
-  
-  /* .main-content main .btn-delete {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-  } */
-  
-  /* .main-content main .btn-delete button {
-    padding: 10px;
-    cursor: pointer;  
-  } */
   
   footer {
-    /* position: fixed; */
     bottom: 0;
     left: 0;
     right: 0;
@@ -216,4 +190,3 @@
       width:100%;
     }
     
-  /*# sourceMappingURL=style.css.map */

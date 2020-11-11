@@ -100,7 +100,7 @@ export class RegisPageComponent extends BaseComponent implements OnInit{
     sv.IdStudent=this.id_student.toUpperCase();
     this._lco.addclassR(sv).subscribe(res=>{
       console.log('dtttt',res)})};
-      alert('Thêm thành công!');
+      alert('Đăng kí thành công!');
       location.reload();   
   }
 

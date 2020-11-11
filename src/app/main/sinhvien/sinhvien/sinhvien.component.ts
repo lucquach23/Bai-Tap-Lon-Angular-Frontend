@@ -35,10 +35,16 @@ export class SinhvienComponent implements OnInit {
   selectOption(id:string)
   {
     this.showl=true;
+    this._lco.get_class_major_faculty(id).subscribe((res:any)=>{
+      this.listclasmajor=res;
+    });
   }
   select_idl(id:string)
   {
     this.show_tb_dslcsv=false;
     this.show_tb_dsl=true;
+    this._lco.get_class_major_id_class(id).subscribe((res:any)=>{
+      this.list_tb_dsl=res;
+    });
   }
 }
